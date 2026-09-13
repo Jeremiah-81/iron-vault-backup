@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=UnifrakturMaguntia&display=swap');
+
+:root {
+  /* Font Families */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Theme: Dark Mode (Default) */
+  --bg-app: hsl(222, 28%, 7%);
+  --bg-phone: hsl(222, 28%, 9%);
+  --bg-card: hsla(222, 24%, 15%, 0.7);
+  --bg-card-hover: hsla(222, 24%, 20%, 0.85);
+  --bg-input: hsla(222, 24%, 12%, 0.9);
+  --bg-nav: hsla(222, 28%, 9%, 0.85);
+  
+  --border-light: hsla(0, 0%, 100%, 0.07);
+  --border-focus: hsla(208, 100%, 65%, 0.4);
+
+  --text-primary: hsl(210, 20%, 98%);
+  --text-secondary: hsl(217, 16%, 70%);
+  --text-tertiary: hsl(217, 10%, 50%);
+
+  /* Accent Colors */
+  --primary: hsl(208, 100%, 60%);
+  --primary-glow: hsla(208, 100%, 60%, 0.25);
+  --primary-gradient: linear-gradient(135deg, hsl(208, 100%, 65%) 0%, hsl(265, 85%, 60%) 100%);
+  
+  --income: hsl(142, 72%, 45%);
+  --income-glow: hsla(142, 72%, 45%, 0.2);
+  --income-gradient: linear-gradient(135deg, hsl(142, 72%, 50%) 0%, hsl(160, 84%, 39%) 100%);
+
+  --expense: hsl(350, 89%, 60%);
+  --expense-glow: hsla(350, 89%, 60%, 0.2);
+  --expense-gradient: linear-gradient(135deg, hsl(350, 89%, 65%) 0%, hsl(325, 80%, 50%) 100%);
+
+  --savings: hsl(190, 90%, 50%);
+  --savings-gradient: linear-gradient(135deg, hsl(190, 90%, 50%) 0%, hsl(208, 100%, 55%) 100%);
+
+  --credit: hsl(43, 96%, 56%);
+  --credit-glow: hsla(43, 96%, 56%, 0.2);
+
+  --budget-warning: hsl(38, 92%, 50%);
+  --budget-danger: hsl(350, 89%, 60%);
+
+  /* Shadow & Blur System */
+  --glass-blur: blur(20px);
+  --shadow-lg: 0 16px 40px -10px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+/* Light Theme overrides if toggled */
+[data-theme='light'] {
+  --bg-app: hsl(220, 20%, 94%);
+  --bg-phone: hsl(220, 30%, 97%);
+  --bg-card: hsla(0, 0%, 100%, 0.75);
+  --bg-card-hover: hsla(0, 0%, 100%, 0.95);
+  --bg-input: hsla(0, 0%, 100%, 0.95);
+  --bg-nav: hsla(0, 0%, 100%, 0.85);
+
+  --border-light: hsla(220, 20%, 10%, 0.08);
+  --border-focus: hsla(208, 100%, 50%, 0.3);
+
+  --text-primary: hsl(222, 28%, 10%);
+  --text-secondary: hsl(222, 10%, 40%);
+  --text-tertiary: hsl(222, 10%, 55%);
+
+  --primary-glow: hsla(208, 100%, 60%, 0.15);
+  --shadow-lg: 0 16px 40px -12px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset and Globals */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--primary-glow);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: hsla(0, 0%, 100%, 0.12);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Interactive elements */
+.btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--primary-glow);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--primary-glow);
+  filter: brightness(1.1);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  font-family: var(--font-display);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--text-tertiary);
+}
+
+/* Form Styles */
+.input-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+/* Page Frame & Container */
+.app-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 92vh;
+  min-height: 720px;
+  max-height: 880px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+  border: 12px solid hsl(222, 28%, 18%);
+  background-color: var(--bg-phone);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile Frame Header Notch & Bezel for Desktop simulation */
+@media (max-width: 500px) {
+  body {
+    background-color: var(--bg-phone);
+    align-items: flex-start;
+  }
+  .app-viewport {
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Warning state for days with a negative balance or remaining calendar days of the month after going negative */
+.day-cell-warning {
+  background: linear-gradient(135deg, hsla(350, 89%, 60%, 0.15) 0%, hsla(350, 89%, 60%, 0.05) 100%) !important;
+  border: 1.5px solid var(--expense) !important;
+}
+
+/* Loading spinner animation for processing security credentials */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-animation {
+  animation: spin 1.8s linear infinite;
+  display: inline-block;
+}
+
+
+
