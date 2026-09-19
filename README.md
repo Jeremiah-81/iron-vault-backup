@@ -1,35 +1,28 @@
-# React + TypeScript + Vite
+# Iron Vault - Personal Finance Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personal finance and budgeting application designed for tracking cash, debit, and credit accounts, with interactive daily ledger calendar calculations, recurring payments, overdraft alerts, and visual analytics.
 
-Currently, two official plugins are available:
+## Features
+- **Daily Calendar Ledger**: Day-by-day cash, debit, and credit tracking with compact balances.
+- **Strict Negative Overdraft Alerts**: Highlights days where any account goes into a negative balance.
+- **Manual Balance Adjustments**: Reconcile any account balance on any day with automated adjustment transactions.
+- **Interactive Reports & Charts**: Visual income vs expenses bar graphs and net worth balance tracker.
+- **Category Customization**: Rename, customize icons, and add custom income & expense buckets.
+- **Clean Local Storage Persistence**: All data stored locally with full reset and backup options.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-
-
-# all code
+## License
+MIT
