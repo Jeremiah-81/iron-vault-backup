@@ -26,3 +26,4 @@ A personal finance and budgeting application designed for tracking cash, debit, 
 
 ## License
 MIT
+
